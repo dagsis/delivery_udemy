@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
   Widget _backgroudCover(BuildContext context){
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.42,
       color: Colors.amber,
       alignment: Alignment.topCenter,
     );
@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
 
  Widget _boxForm(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.33,
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35,
                               left:50,
                               right:50 ),
       decoration: BoxDecoration(
@@ -62,39 +62,72 @@ class LoginPage extends StatelessWidget {
         ]
       ),
       height: MediaQuery.of(context).size.height * 0.45,
-      child: Column(
-        children: [
-          _textYourInfo(),
-          _textFieldEmail(),
-          _textFieldPassword()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _textYourInfo(),
+            _textFieldEmail(),
+            _textFieldPassword(),
+            _buttonLogin(),
+          ],
+        ),
       ),
     );
  }
 
  Widget _textYourInfo() {
-    return Text(
-        'INGRESA ESTA INFORMACION'
+    return Container(
+      margin: EdgeInsets.only(top: 40,bottom: 45),
+      child: Text(
+          'INGRESA ESTA INFORMACION',
+        style: TextStyle(
+          color: Colors.black
+        ),
+      ),
     );
  }
 
  Widget _textFieldEmail(){
-    return TextField(
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        hintText: 'Correo electronico',
-        prefixIcon: Icon(Icons.email)
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          hintText: 'Correo electronico',
+          prefixIcon: Icon(Icons.email)
+        ),
       ),
     );
  }
 
   Widget _textFieldPassword(){
-    return TextField(
-      keyboardType: TextInputType.text,
-      obscureText: false,
-      decoration: InputDecoration(
-          hintText: 'Contraseña',
-          prefixIcon: Icon(Icons.lock)
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40,vertical: 20),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        obscureText: true,
+        decoration: InputDecoration(
+            hintText: 'Contraseña',
+            prefixIcon: Icon(Icons.lock)
+        ),
+      ),
+    );
+  }
+
+  Widget _buttonLogin() {
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.symmetric(horizontal: 40,vertical: 25),
+      child: ElevatedButton(
+            onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(vertical: 15)
+          ),
+            child: Text('LOGIN',
+            style: TextStyle(
+              color: Colors.black,
+                 )
+              ,)
       ),
     );
   }
